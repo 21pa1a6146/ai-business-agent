@@ -1,6 +1,10 @@
-langchain
-langchain-google-genai
-langchain-community
-crewai
-crewai-tools
-python-dotenv
+fastapi==0.111.0
+uvicorn==0.29.0
+crewai==0.28.0
+crewai-tools==0.1.6
+langchain==0.1.20
+langchain-community==0.0.38
+langchain-google-genai==1.0.3
+python-dotenv==1.0.1
+groq==0.5.0
+mlflow==2.12.1
