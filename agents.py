@@ -1,5 +1,5 @@
 from crewai import Agent, LLM
-from tools import search_tool, file_writer
+from tools import search_tool
 from dotenv import load_dotenv
 import os
 
@@ -36,7 +36,7 @@ writer = Agent(
     goal="Write professional business reports",
     backstory="""You write crisp structured reports used by
     C-suite executives.""",
-    tools=[file_writer],
+    tools=[],
     llm=llm,
     verbose=True
 )

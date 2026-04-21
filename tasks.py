@@ -2,8 +2,6 @@ from crewai import Task
 from agents import researcher, analyst, writer
 
 def create_tasks(company_name: str):
-
-    # Task 1 - researcher does this
     research_task = Task(
         description=f"""
         Research the company: {company_name}
@@ -18,7 +16,6 @@ def create_tasks(company_name: str):
         agent=researcher
     )
 
-    # Task 2 - analyst does this using Task 1 output
     analysis_task = Task(
         description=f"""
         Analyze the research about {company_name}:
@@ -33,12 +30,10 @@ def create_tasks(company_name: str):
         context=[research_task]
     )
 
-    # Task 3 - writer does this using both Task 1 and 2 outputs
     report_task = Task(
         description=f"""
         Write a professional report about {company_name}.
         Format it like this:
-
         # Business Report: {company_name}
         ## Executive Summary
         ## Company Overview
@@ -48,9 +43,10 @@ def create_tasks(company_name: str):
         ## Opportunities
         ## Recommendation
 
-        Save it as '{company_name.lower().replace(" ", "_")}_report.txt'
+        Return the complete report as plain text only.
+        Do NOT use any file writing tools.
         """,
-        expected_output="Complete formatted business report saved to a file",
+        expected_output="Complete formatted business report as text",
         agent=writer,
         context=[research_task, analysis_task]
     )

@@ -1,6 +1,5 @@
-from crewai_tools import SerperDevTool, FileWriterTool
-from crewai.tools import BaseTool
-from ddgs import DDGS
+from crewai_tools import BaseTool
+from duckduckgo_search import DDGS
 
 class DuckDuckGoTool(BaseTool):
     name: str = "Web Search"
@@ -16,4 +15,3 @@ class DuckDuckGoTool(BaseTool):
             return output
 
 search_tool = DuckDuckGoTool()
-file_writer = FileWriterTool()
